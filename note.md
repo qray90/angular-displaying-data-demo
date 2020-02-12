@@ -55,22 +55,36 @@ console.log(input.value, input.getAttribute('value'))
 
 ```
 
-事件简写：
-```html
-<button (click)="handleClick($event)"></button>
-
-<button on-click="handleClick($event)"></button>
-```
-
-第一种双向绑定（属性事件双向绑定）：
-```html
-<input
-  [value]="currentInput"
-  (input)="currentInput = $event.target.value"
-/>
-
-```
-
 # 7. 自定义事件
+```ts
+const emitName = new EventEmitter<Item>()
 
+this.emitName.emit(data: Item)
+
+```
+```html
+<app-customer (emitName)="handleEmitName($event)"></app-customer>
+```
+# 7. 双向数据绑定
+1. 双向绑定, 有size属性，sizeChange事件
+```ts
+@Input() size: string;
+@OutPut() sizeChange = new EventEmitter<Item>()
+```
+
+```html
+<app-customer
+  [size]="currentInput"
+  (sizeChange)="currentInput = $event.target.value"
+></app-customer>
+```
+
+简写为：
+```html
+<app-customer [(app-customer)]="data"></app-customer>
+```
+2. 表单双向数据绑定(ngModel)
+```html
+<input [(ngModel)]="valueData" />>
+```
 
