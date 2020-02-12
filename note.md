@@ -88,3 +88,13 @@ this.emitName.emit(data: Item)
 <input [(ngModel)]="valueData" />>
 ```
 
+# 8. 内置指令
+属性指令会跟DOM进行直接接触，要用*。
+结构性指令不会跟DOM直接接触，会改变与之相伴的指令的行为。
+1. 属性型
+`ngClass` `ngStyle` `ngModel`
+
+2. 结构性
+`ngIf` `ngFor` `ngSwitch, ngSwitchCase, ngSwitchDefault`
+- ngIf, ngFor前要加*， ngSwitch用绑定
+- ngFor的微语法里面有个trackBy，类似于vue里面的key，只是是一个函数，需返回一个唯一值

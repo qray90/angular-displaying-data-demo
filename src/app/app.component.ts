@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 
 @Component({
@@ -63,9 +63,21 @@ import { Hero } from './hero';
       自定义属性：
       <app-item-detail (alertEmitter)="alertInfo($event)"></app-item-detail>
     </div>
+
+    <div>
+      内置属性指令：
+      <div [ngClass]="currentClass">ngClass</div>
+      <div [ngStyle]="currentStyle">ngStyle</div>
+    </div>
+
+    <div [ngSwitch]="1">
+      <div *ngSwitchCase="0">0</div>
+      <div *ngSwitchCase="1">1</div>
+      <div *ngSwitchDefault>default</div>
+    </div>
   `
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
   heroes = [
     new Hero(1, 'Windstorm'),
@@ -83,6 +95,29 @@ export class AppComponent {
   evilScript = '<script>alert("evil")</script> script标签外的字符';
 
   currentInput = 'default';
+
+  currentClass = {};
+  currentStyle = {};
+
+  ngOnInit(): void {
+    this.setCurrentClass();
+    this.setCurrentStyle();
+  }
+
+  setCurrentClass() {
+    this.currentClass = {
+      foo: true,
+      bar: true,
+      baz: false,
+    };
+  }
+
+  setCurrentStyle() {
+    this.currentStyle = {
+      fontSize: '30px',
+      color: 'red'
+    };
+  }
 
   inputChange(el) {
     console.log(el.value, el.getAttribute('value'));
