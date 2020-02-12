@@ -101,3 +101,9 @@ this.emitName.emit(data: Item)
 
 # 9. 模板引用变量（#var或ref-var）
 一般是对DOM元素的引用，还可以引用指令（包含组件）、元素、TemplateRef 或 Web Component 。
+
+# 10. @Input / @Output别名
+```ts
+@Input(alias) property: any
+@Output(alias) eventName = new eventEmitter<any>()
+```
