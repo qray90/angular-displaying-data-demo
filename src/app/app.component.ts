@@ -75,6 +75,12 @@ import { Hero } from './hero';
       <div *ngSwitchCase="1">1</div>
       <div *ngSwitchDefault>default</div>
     </div>
+
+    <div>
+      <h4>模板引用变量</h4>
+      电话：<input #phone />
+      <button (click)="alertPhone(phone.value)">点击弹出电话</button>
+    </div>
   `
 })
 export class AppComponent implements OnInit {
@@ -129,5 +135,9 @@ export class AppComponent implements OnInit {
 
   alertInfo(event) {
     console.log(event);
+  }
+
+  alertPhone(phone) {
+    alert(phone);
   }
 }

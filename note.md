@@ -98,3 +98,6 @@ this.emitName.emit(data: Item)
 `ngIf` `ngFor` `ngSwitch, ngSwitchCase, ngSwitchDefault`
 - ngIf, ngFor前要加*， ngSwitch用绑定
 - ngFor的微语法里面有个trackBy，类似于vue里面的key，只是是一个函数，需返回一个唯一值
+
+# 9. 模板引用变量（#var或ref-var）
+一般是对DOM元素的引用，还可以引用指令（包含组件）、元素、TemplateRef 或 Web Component 。
