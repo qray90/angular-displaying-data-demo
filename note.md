@@ -107,3 +107,60 @@ this.emitName.emit(data: Item)
 @Input(alias) property: any
 @Output(alias) eventName = new eventEmitter<any>()
 ```
+
+# 11. 响应式表单
+1. 单个表单项 - `FormControl` - `formControlName`
+2. 表单组 - `FormGroup` - `formGroupName`
+3. 生成表单控件 - `FormBuilder`
+
+要把表单组件变量与UI绑定，用`[formGroup]=xxxx`
+
+```html
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label>
+    First name:
+    <input formControlName="firstName">
+  </label><br>
+  <label>
+    Last name:
+    <input formControlName="lastName">
+  </label><br>
+
+  <div formGroupName="address">
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label><br>
+
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+  </div>
+
+  <input type="submit" >
+  <button (click)="patchProfile()">patch profile</button>
+</form>
+```
+```ts
+// 1. 采用FormBuilder创建
+profileForm = this.formBuilder.group({
+ firstName: [''], // 数组的第一项是初始值，第二第三分别是同步和异步验证器
+ lastName: [''],
+ address: this.formBuilder.group({
+   street: [''],
+   city: ['']，
+ }),
+});
+
+// 2. 直接创建
+profileForm = new FormGroup({
+ firstName: new FormControl(''),
+ lastName: new FormControl(''),
+ address: new FormGroup({
+   street: new FormControl(''),
+   city: new FormControl(''),
+ })
+});
+```

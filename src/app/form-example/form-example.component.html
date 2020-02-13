@@ -1,0 +1,98 @@
+<h3>响应式表单</h3>
+<h4>1. 显示表单值</h4>
+<button (click)="updateName()">更改姓名</button><br>
+name: <input type="text" [formControl]="name"><br>
+value: {{ name.value }}
+
+<h4>2. 表单组</h4>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label>
+    First name:
+    <input formControlName="firstName">
+  </label><br>
+  <label>
+    Last name:
+    <input formControlName="lastName">
+  </label><br>
+
+  <div formGroupName="address">
+
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label><br>
+
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label><br>
+
+    <label>
+      State:
+      <input type="text" formControlName="state">
+    </label><br>
+
+    <label>
+      Zip Code:
+      <input type="text" formControlName="zip">
+    </label><br>
+
+  </div>
+
+  <input type="submit" >
+  <button (click)="patchProfile()">patch profile</button>
+</form>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -81,6 +81,8 @@ import { Hero } from './hero';
       电话：<input #phone />
       <button (click)="alertPhone(phone.value)">点击弹出电话</button>
     </div>
+
+    <app-form-example></app-form-example>
   `
 })
 export class AppComponent implements OnInit {
