@@ -87,7 +87,7 @@ import { Hero } from './hero';
 })
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';
-  heroes = [
+  heroes: Hero[] = [
     new Hero(1, 'Windstorm'),
     new Hero(13, 'Bombasto'),
     new Hero(15, 'Magneta'),
