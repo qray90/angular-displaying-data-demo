@@ -89,8 +89,6 @@ this.emitName.emit(data: Item)
 ```
 
 # 8. 内置指令
-属性指令会跟DOM进行直接接触，要用*。
-结构性指令不会跟DOM直接接触，会改变与之相伴的指令的行为。
 1. 属性型
 `ngClass` `ngStyle` `ngModel`
 

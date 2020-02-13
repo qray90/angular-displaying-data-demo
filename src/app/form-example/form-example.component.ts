@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-example',
@@ -23,7 +23,7 @@ export class FormExampleComponent implements OnInit {
 
 
   profileForm = this.formBuilder.group({
-    firstName: [''],
+    firstName: ['', Validators.required],
     lastName: [''],
     address: this.formBuilder.group({
       street: [''],
@@ -44,6 +44,7 @@ export class FormExampleComponent implements OnInit {
 
   onSubmit() {
     console.log(this.profileForm.value);
+    console.log(this.profileForm.status);
   }
 
   patchProfile() {
