@@ -10,78 +10,30 @@
       appForbiddenName="mrbob"
       minlength="4"
       [(ngModel)]="inputName"
-      #name="ngModel"
+      #nameValidator="ngModel"
     />
   </label>
 
   <div
-    *ngIf="name.invalid && (name.dirty || name.touched)"
+    *ngIf="nameValidator.invalid && (nameValidator.dirty || nameValidator.touched)"
     class="alert alert-danger"
   >
-    <div *ngIf="name.errors.required">
+    <div *ngIf="nameValidator.errors.required">
       姓名为必填字段
     </div>
 
-    <div *ngIf="name.errors.minlength">
+    <div *ngIf="nameValidator.errors.minlength">
       姓名最小字段为4
     </div>
 
-    <div *ngIf="name.errors.appForbiddenName">
+    <div *ngIf="nameValidator.errors.appForbiddenName">
       输入不能为bob
     </div>
   </div>
 </div>
 
 <h3>响应式表单验证</h3>
-<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      [(ngModel)]="model.name"
-      name="name"
-      #name="ngModel"
-    />
-    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-      Name is required
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="alterEgo">Alter Ego</label>
-    <input
-      type="text"
-      class="form-control"
-      id="alterEgo"
-      [(ngModel)]="model.alterEgo"
-      name="alterEgo"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="power">Hero Power</label>
-    <select
-      class="form-control"
-      id="power"
-      [(ngModel)]="model.power"
-      name="power"
-    >
-      <option *ngFor="let pow of powers" [value]="pow">{{ pow }}</option>
-    </select>
-  </div>
-
-  <input type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid" />
-  <!-- <button
-    type="button"
-    class="btn btn-default"
-    (click)="newHero(); "
-  >
-    New Hero
-  </button> -->
-</form>
-
+<app-reactive-form-validate></app-reactive-form-validate>
 
 <br />
 <br />
