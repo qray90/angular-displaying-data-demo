@@ -7,6 +7,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { FormExampleComponent } from './form-example/form-example.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeroFormComponent } from './hero-form/hero-form.component';
+import { FormValidateComponent } from './form-validate/form-validate.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
     ItemDetailComponent,
     FormExampleComponent,
     HeroFormComponent,
+    FormValidateComponent,
   ],
   imports: [
     FormsModule,

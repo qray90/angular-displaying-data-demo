@@ -83,6 +83,8 @@ import { Hero } from './hero';
     </div>
 
     <app-form-example></app-form-example>
+
+    <app-form-validate></app-form-validate>
   `
 })
 export class AppComponent implements OnInit {
