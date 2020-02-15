@@ -1,5 +1,11 @@
+import { passwordsValidator, usernameValidator } from './../validators/validators';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form-validate',
@@ -9,8 +15,17 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class ReactiveFormValidateComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
+  profileInfo = {
+    username: '',
+    mobile: '',
+    passwordsGroup: {
+      password: '',
+      pconfirm: ''
+    }
+  };
+
   formModel = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(6)]],
+    username: ['', [Validators.required, Validators.minLength(6), usernameValidator ]],
     mobile: ['', this.mobileValidator],
     passwordsGroup: this.fb.group(
       {
@@ -18,8 +33,23 @@ export class ReactiveFormValidateComponent implements OnInit {
         pconfirm: ['']
       },
       {
-        validator: this.equalValidator
+        validator: passwordsValidator
       }
+    )
+  });
+
+  formModel2 = new FormGroup({
+    username: new FormControl(this.profileInfo.username, [
+      Validators.required,
+      Validators.minLength(6)
+    ]),
+    mobile: new FormControl(this.profileInfo.mobile, this.mobileValidator),
+    passwordsGroup: new FormGroup(
+      {
+        password: new FormControl(this.profileInfo.passwordsGroup.password),
+        pconfirm: new FormControl(this.profileInfo.passwordsGroup.pconfirm)
+      },
+      this.equalValidator
     )
   });
 
@@ -49,22 +79,23 @@ export class ReactiveFormValidateComponent implements OnInit {
   }
 
   onSubmit() {
-    // 获取校验信息
-    const info = this.formModel.get('username');
-    console.log('校验信息', info);
+    console.log(this.formModel.get('username'));
+    // // 获取校验信息
+    // const info = this.formModel.get('username');
+    // console.log('校验信息', info);
 
-    // 获取校验结果
-    const isValide = this.formModel.get('username').valid;
-    console.log('校验结果', isValide);
+    // // 获取校验结果
+    // const isValide = this.formModel.get('username').valid;
+    // console.log('校验结果', isValide);
 
-    // 获取错误信息
-    const error = this.formModel.get('username').errors;
-    console.log('错误信息', error);
+    // // 获取错误信息
+    // const error = this.formModel.get('username').errors;
+    // console.log('错误信息', error);
 
-    // 只有当formModel中所有的字段都是合法条件
-    if (this.formModel.valid) {
-      console.log(this.formModel.value);
-    }
+    // // 只有当formModel中所有的字段都是合法条件
+    // if (this.formModel.valid) {
+    //   console.log(this.formModel.value);
+    // }
   }
 
   ngOnInit(): void {}

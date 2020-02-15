@@ -1,9 +1,15 @@
 <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
   <div>用户名：<input type="text" formControlName="username" /></div>
+  <div>{{ formModel.get('username').valid }}</div>
+  <div>{{ formModel.hasError('valid', 'username') }}</div>
+  <div>{{ formModel.getError('valid', 'username')?.message }}</div>
   <div>手机号：<input type="number" formControlName="mobile" /></div>
   <div formGroupName="passwordsGroup">
     <div>密码：<input type="password" formControlName="password" /></div>
     <div>确认密码：<input type="password" formControlName="pconfirm" /></div>
+    <div class="alert alert-danger" *ngIf="formModel.hasError('equal', 'passwordsGroup')">
+      {{ formModel.getError('equal', 'passwordsGroup').message }}
+    </div>
   </div>
   <button>注册</button>
 </form>
