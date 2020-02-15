@@ -1,11 +1,6 @@
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-validate',
@@ -13,7 +8,6 @@ import { Hero } from '../hero';
   styleUrls: ['./form-validate.component.css']
 })
 export class FormValidateComponent implements OnInit {
-  heroForm;
   inputName = '';
 
   // 模板驱动表单验证的字段
@@ -29,27 +23,11 @@ export class FormValidateComponent implements OnInit {
   constructor() {}
 
 
-
-
-
-  get name() {
-    return this.heroForm.get('name');
+  appForbiddenName(params) {
+    console.log(params);
   }
 
-  get power() {
-    return this.heroForm.get('power');
-  }
-
-  ngOnInit(): void {
-    // this.heroForm = new FormGroup({
-    //   name: new FormControl(this.model.name, [
-    //     Validators.required,
-    //     Validators.minLength(4)
-    //   ]),
-    //   alertEgo: new FormControl(this.model.alterEgo),
-    //   power: new FormControl(this.model.power, Validators.required)
-    // });
-  }
+  ngOnInit(): void {}
 
 
 }

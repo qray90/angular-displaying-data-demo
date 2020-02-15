@@ -85,7 +85,7 @@ this.emitName.emit(data: Item)
 ```
 2. 表单双向数据绑定(ngModel)
 ```html
-<input [(ngModel)]="valueData" />>
+<input [(ngModel)]="valueData" />
 ```
 
 # 8. 内置指令
@@ -164,4 +164,22 @@ profileForm = new FormGroup({
 ```
 
 # 表单验证
+1. 模板驱动验证
+   - 将验证规则写在html中
+   - 表单元素应当写在form标签内
+   - 设置``#ngFormValidator="ngForm"`` ``#ngModelValidator="ngModel"``
+2.  响应式表单验证
+    - 通过FormBuilder或FormGroup,FormControl对象，添加验证函数
+    - formModel.get('xxx').invalid来获取是否验证成功(非自定义)
+    - formModel.get('xxx').errors查看验证错误（非自定义）
+
+3. 自定义验证器
+   - 判断是否有错误 formModel.hasError('isContainBob', 'username')
+   - 获取错误信息 formModel.getError('isContainBob', 'username').message
+
+4. 模板驱动的自定义验证器
+   - 要创建一个指令，包装验证器函数
+   - 并且要在appModule中declaration
+   - 指令用在需要验证的表单元素上，通过ngModelValidator.errors.xxx, 这里的xxx是验证指令传出的任何类型值
+
 

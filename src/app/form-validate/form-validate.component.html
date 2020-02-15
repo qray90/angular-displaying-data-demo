@@ -1,21 +1,25 @@
 <h3>模板驱动表单验证</h3>
-<div class="form-group">
+<form class="form-group" #ngProfile="ngForm" >
   <label>
     姓名：
     <input
       class="form-control"
+      autocomplete="off"
       type="text"
       name="name"
       required
-      appForbiddenName="mrbob"
       minlength="4"
       [(ngModel)]="inputName"
       #nameValidator="ngModel"
+      appValidatePosition="bob"
     />
   </label>
+  <div>{{ ngProfile.invalid }}</div>
 
   <div
-    *ngIf="nameValidator.invalid && (nameValidator.dirty || nameValidator.touched)"
+    *ngIf="
+      nameValidator.invalid && (nameValidator.dirty || nameValidator.touched)
+    "
     class="alert alert-danger"
   >
     <div *ngIf="nameValidator.errors.required">
@@ -26,62 +30,12 @@
       姓名最小字段为4
     </div>
 
-    <div *ngIf="nameValidator.errors.appForbiddenName">
-      输入不能为bob
+    <div *ngIf="nameValidator.errors.msg">
+      {{nameValidator.errors.msg.value}}
     </div>
   </div>
-</div>
+</form>
 
 <h3>响应式表单验证</h3>
 <app-reactive-form-validate></app-reactive-form-validate>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />

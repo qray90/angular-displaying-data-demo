@@ -1,3 +1,4 @@
+import { ValidatePositionDirective } from './directive/directiveValidator';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,6 +20,7 @@ import { ReactiveFormValidateComponent } from './reactive-form-validate/reactive
     HeroFormComponent,
     FormValidateComponent,
     ReactiveFormValidateComponent,
+    ValidatePositionDirective
   ],
   imports: [
     FormsModule,
