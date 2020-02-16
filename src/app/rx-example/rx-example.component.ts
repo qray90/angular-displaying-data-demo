@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, of, pipe } from 'rxjs';
+import { fromEvent, of, pipe, Observable } from 'rxjs';
 
 import { ajax } from 'rxjs/ajax';
 import { filter, map } from 'rxjs/operators';
@@ -10,6 +10,10 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./rx-example.component.css']
 })
 export class RxExampleComponent implements OnInit {
+  time = new Observable<string>(observer => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  });
+
   constructor() {}
 
   ngOnInit(): void {
