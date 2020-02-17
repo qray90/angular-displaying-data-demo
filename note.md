@@ -163,7 +163,7 @@ profileForm = new FormGroup({
 });
 ```
 
-# 表单验证
+# 12.表单验证
 1. 模板驱动验证
    - 将验证规则写在html中
    - 表单元素应当写在form标签内
@@ -181,5 +181,13 @@ profileForm = new FormGroup({
    - 要创建一个指令，包装验证器函数
    - 并且要在appModule中declaration
    - 指令用在需要验证的表单元素上，通过ngModelValidator.errors.xxx, 这里的xxx是验证指令传出的任何类型值
+
+
+# 13.NgModule
+NgModule导出声明的类，与js模块不同的是，NgModule引入的js模块必须要在NgModule中注册才可以。@NgModule里面元数据属性有
+- declarations：注册模块的类，告诉 Angular 哪些组件属于该模块。只接受可声明对象，包括`组件`, `指令`, `管道`，声明的类在本模块可见。一个声明文件只能在一个NgModule中，其他模块想使用，必须引入这个模块
+- imports：告诉 Angular 该模块想要正常工作，还需要哪些模块。只有在此引用的模块，才能在本模块中使用
+- exports：只有在此导出的模块，才能被其他的模块使用
+- providers：注册存放服务的类
 
 
